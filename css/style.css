@@ -8,7 +8,6 @@ body {
 
 body .carousel {
   background: #eee;
-  margin: 10%;
 }
 
 body .carousel .carousel-cell {
@@ -23,8 +22,26 @@ body .carousel .carousel-cell img {
 
 @media screen and (min-width: 768px) {
   body .carousel .carousel-cell img {
-    height: 400px;
+    min-height: 250px;
+    height: 50vh;
   }
+}
+
+body .cell-hash {
+  text-align: center;
+}
+
+body .cell-hash a {
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  border-radius: 3px;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+body .cell-hash a:hover {
+  background-color: #777;
+  color: #fff;
 }
 
 /*# sourceMappingURL=style.css.map */

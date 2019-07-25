@@ -3,24 +3,41 @@
 }
 
 body {
-  font-family: sans-serif;
+  font-family: sans-serif;   
 
-  .carousel {
-    background: #eee;
-    margin: 10%;
-  
-    .carousel-cell {
-      margin-right: 20px;
-      overflow: hidden;
-  
-      img {
-        display: block;
-        height: 200px;
-  
-        @media screen and (min-width: 768px) {
-          height: 400px;
+    .carousel {
+        background: #eee;            
+      
+        .carousel-cell {
+          margin-right: 20px;
+          overflow: hidden;
+      
+          img {
+            display: block;
+            height: 200px;
+      
+            @media screen and (min-width: 768px) {
+                min-height: 250px;
+                height: 50vh;
+            }
+          }
         }
-      }
     }
-  }
+    .cell-hash {
+        text-align: center;
+
+        a {
+            text-decoration: none;
+            color: #333;
+            padding: 10px;
+            border-radius: 3px;
+            transition: background-color 0.5s ease, color 0.5s ease;
+
+            &:hover {
+                background-color: #777;
+                color: #fff;
+            }
+        }
+    }
+  
 }

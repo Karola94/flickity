@@ -1,7 +1,8 @@
 var carousel = document.querySelector('.carousel');
 var flkty = new Flickity(carousel, {
   imagesLoaded: true,
-  percentPosition: false
+  percentPosition: true,
+  hash: true
 });
 
 var imgs = carousel.querySelectorAll('.carousel-cell img');
