@@ -1,29 +1,11 @@
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-body {
-  font-family: sans-serif;
-}
+body { font-family: sans-serif; }
 
-.carousel {
-  background: #eee;
-}
+body .carousel { background: #eee; }
 
-.carousel .carousel-cell {
-  margin-right: 20px;
-  overflow: hidden;
-}
+body .carousel .carousel-cell { margin-right: 20px; overflow: hidden; }
 
-.carousel .carousel-cell img {
-  display: block;
-  height: 200px;
-}
+body .carousel .carousel-cell img { display: block; height: 200px; }
 
-@media screen and (min-width: 768px) {
-  .carousel .carousel-cell img {
-    height: 400px;
-  }
-}
-
-/*# sourceMappingURL=style.css.map */
+@media screen and (min-width: 768px) { body .carousel .carousel-cell img { height: 400px; } }
