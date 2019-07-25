@@ -8,48 +8,30 @@
     "test:html": "globstar nu-html-checker *.html",
     "init-project": "npm install && npm-run-all init:*",
     "init:dirs": "mkdirp sass css vendor images js",
-    "init:files": "touch index.html sass/style.scss js/script.js",
-    "prewatch": "npm run clean",
-    "watch": "parcel src/index.html --open --no-autoinstall --port 8080",
-    "prebuild": "npm run clean",
-    "build": "parcel build src/index.html",
-    "clean": "rimraf dist",
-    "code-quality": "npm run format && npm run lint",
-    "format": "prettier --write \"src/**/*.{js,html,scss}\"",
-    "lint": "eslint src/"
+    "init:files": "touch README.md index.html sass/style.scss js/script.js",
+    "init:gitignore": "curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore",
+    "build": "npm-run-all build:* test",
+    "build:clean": "rm -rf 'css/*' ",
+    "build:sass": "node-sass --output-style compact -o css sass",
+    "build:autoprefixer": "autoprefixer-cli css/style.css",
+    "build-dev:sass": "node-sass --output-style expanded --source-map true -o css sass",    
+    "watch": "npm-run-all build -p watch:*",
+    "watch:sassprefixer": "npm-run-all watch:*",
+    "watch:onChange": "onchange -d 100 'sass/*' -- npm run watch:sass",    
+    "watch:sass": "node-sass --output-style expanded --source-map true -o css sass",
+    "watch:autoprefixer": "autoprefixer-cli -o  'css/style.css'",
+    "watch:browsersync": "node_modules/.bin/browser-sync start --server --files 'css/*.css' '*.html'"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged && lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^5.12.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-node": "^8.0.1",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "husky": "^1.3.1",
-    "lint-staged": "^8.1.0",
-    "parcel-bundler": "^1.11.0",
-    "posthtml-include": "^1.2.0",
-    "prettier": "^1.15.3",
-    "pretty-quick": "^1.8.0",
-    "rimraf": "^2.6.3",
-    "sass": "^1.15.3",
-    "npm-run-all": "^4.1.5"
-  },
-  "dependencies": {
-    "jquery": "^3.3.1",
-    "popper.js": "^1.14.6"
+    "autoprefixer-cli": "^1.0.0",
+    "browser-sync": "^2.26.7",
+    "globstar": "^1.0.0",
+    "node-sass": "^4.12.0",
+    "npm-run-all": "^4.1.5",
+    "nu-html-checker": "^0.1.0",
+    "onchange": "^6.0.0"
   }
 }
