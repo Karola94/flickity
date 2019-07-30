@@ -1,4 +1,22 @@
+var templateSlide = document.getElementById('template-slide').innerHTML;
 var carousel = document.querySelector('.carousel');
+var templateCarousel = carousel.innerHTML;
+
+Mustache.parse(templateSlide);
+
+var slides = '';
+
+for(var i=0; i<slideData.length; i++){
+  console.log(slideData);
+  slides += Mustache.render(templateSlide, slideData[i]);
+}
+
+// var fullSlideShow = Mustache.render()
+
+caro.insertAdjacentHTML('beforeend', slides);
+
+
+
 var flkty = new Flickity(carousel, {
   imagesLoaded: true,
   percentPosition: false,
