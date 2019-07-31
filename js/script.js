@@ -64,17 +64,17 @@ window.initMap = function() {
     var map = new google.maps.Map(
         document.getElementById('map'), {zoom: 7, center: slideData[0].coords});
     
-    
+    //Adding markers to the map
     for(var j=0; j<slideData.length; j++){
       var marker = new google.maps.Marker({
         position: slideData[j].coords,
         map: map
-      });
-
-      marker.addListener('click', function(){       
+      });  
+      marker[2].addListener('click', function(){  
+        flkty.select(j);     
         infos.innerHTML = 'You clicked marker';
-      });
-    }  	
+      });     
+    }  	    
 
     document.getElementById('center-map').addEventListener('click', function(event){
         event.preventDefault();        
