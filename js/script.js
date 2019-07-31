@@ -1,4 +1,18 @@
+var templateSlide = document.getElementById('template-slide').innerHTML;
 var carousel = document.querySelector('.carousel');
+var templateCarousel = carousel.innerHTML;
+
+Mustache.parse(templateSlide);
+
+var slides = '';
+
+for(var i=0; i<slideData.length; i++){
+  console.log(slideData);
+  slides += Mustache.render(templateSlide, slideData[i]);
+}
+
+caro.insertAdjacentHTML('beforeend', slides);
+
 var flkty = new Flickity(carousel, {
   imagesLoaded: true,
   percentPosition: false,
@@ -37,46 +51,30 @@ restart.addEventListener('click', function(){
 
 
 
+
+
 //Google maps
 
 var infos = document.getElementById('infos');
 
 window.initMap = function() {
     // The location of Uluru
-    var uluru = {lat: -25.344, lng: 131.036};
-    var coords2 = {lat: -25.363, lng: 134.044};
-	var coords3 = {lat: -25.363, lng: 137.044};
+    var uluru = {lat: -25.344, lng: 131.036};    
     // The map, centered at Uluru
     var map = new google.maps.Map(
-        document.getElementById('map'), {zoom: 7, center: uluru});
-    // The marker, positioned at Uluru
-    var markerOne = new google.maps.Marker({
-        position: uluru,
+        document.getElementById('map'), {zoom: 7, center: slideData[0].coords});
+    
+    
+    for(var j=0; j<slideData.length; j++){
+      var marker = new google.maps.Marker({
+        position: slideData[j].coords,
         map: map
-    });
+      });
 
-    markerOne.addListener('click', function(){
-        // Wewnątrz funcji wpisujemy kod, który ma się wykonać po kliknięciu markera. W tym przykładzie wyświetlimy tekst na stronie. 
-        infos.innerHTML = 'You clicked markerOne';
-    });	
-    
-    var markerTwo = new google.maps.Marker({
-        position: coords2,
-        map: map
-    });
-
-    markerTwo.addListener('click', function(){
-        infos.innerHTML = 'You clicked markerTwo';
-    });		
-    
-    var markerThree = new google.maps.Marker({
-        position: coords3,
-        map: map
-    });
-    
-    markerThree.addListener('click', function(){
-        infos.innerHTML = 'You clicked markerThree';
-    });	
+      marker.addListener('click', function(){       
+        infos.innerHTML = 'You clicked marker';
+      });
+    }  	
 
     document.getElementById('center-map').addEventListener('click', function(event){
         event.preventDefault();        
