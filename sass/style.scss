@@ -3,7 +3,10 @@
 }
 
 body {
-  font-family: sans-serif;  
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  text-align: center;  
 
   .restart {
     position: absolute;
@@ -67,5 +70,16 @@ body {
               color: #fff;
           }
       }
-  }  
+  }
+  .container {
+    align-self: center;
+    width: 70%;
+    margin-bottom: 50px;
+
+    #map {
+        height: 50vh;             
+        background-color: grey; 
+        align-self: center;
+    }
+}   
 }

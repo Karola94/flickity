@@ -4,6 +4,9 @@
 
 body {
   font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 body .restart {
@@ -76,6 +79,18 @@ body .cell-hash a {
 body .cell-hash a:hover {
   background-color: #777;
   color: #fff;
+}
+
+body .container {
+  align-self: center;
+  width: 70%;
+  margin-bottom: 50px;
+}
+
+body .container #map {
+  height: 50vh;
+  background-color: grey;
+  align-self: center;
 }
 
 /*# sourceMappingURL=style.css.map */
